@@ -34,7 +34,7 @@
             @auth
             {{-- Bagian ini ditampilkan jika pengguna sudah login --}}
             <a href="{{ route('logout') }}" class="flex flex-col items-center justify-center space-y-1 transform transition duration-100 hover:scale-105" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <img src="{{ asset('icon/logout1.png') }}" alt="Logout" class="h-8 w-8 object-contain">
+                <img src="{{ asset('icon/Logout1.png') }}" alt="Logout" class="h-8 w-8 object-contain">
                 <span class="text-xs text-center font-bold mb-2 text-gray-700">Logout</span>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -155,23 +155,22 @@
 <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
     
     {{-- Container untuk pemusatan penuh --}}
-    {{-- Menggunakan min-h-full dan menghapus kelas responsif yang berpotensi memecahkan pemusatan Flexbox --}}
+    {{-- PERUBAHAN: Ganti min-h-screen dan hapus sm:block/sm:p-0 yang bermasalah --}}
     <div class="flex items-center justify-center min-h-full px-4 py-6 text-center"> 
         
-        {{-- BackDrop (Lapisan Abu-abu Transparan) --}}
-        {{-- Z-index disetel ke 40 (lebih rendah dari konten modal) --}}
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-40" aria-hidden="true"></div> 
+        {{-- BackDrop (Lapisan Abu-abu) --}}
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div> 
         
         {{-- Kotak Konten Modal (Kotak Putih) --}}
-        {{-- Z-index disetel ke 50 (paling atas) --}}
+        {{-- PERUBAHAN: Tambahkan relative z-10 untuk memastikan kotak putih di atas backdrop --}}
         <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl 
                     transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 
-                    relative z-50"> 
+                    relative z-10"> 
             
             <div class="sm:flex sm:items-start">
                 <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-blue-600">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.017 3.377 1.517 3.377h13.064c1.5 0 2.383-1.877 1.517-3.377L12.99 3.375c-.865-1.5-2.29-1-3.155 0L2.696 16.501z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.017 3.377 1.517 3.377h13.064c1.5 0 2.383-1.877 1.517-3.377L12.99 3.375c-.865-1.5-2.29-1.5-3.155 0L2.696 16.501z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
                 </div>
@@ -303,7 +302,7 @@
             if (kedatanganLink) {
                 kedatanganLink.addEventListener('click', function(e) {
                     e.preventDefault();
-                    window.location.href = '/form_pengajuan?keterangan=datang&judul=Kedatangan%20Luar%20Daerah&icon=kedatangan.png';
+                    window.location.href = '/form_pengajuan?keterangan=DTG&judul=Kedatangan%20Luar Daerah&icon=kedatangan.png';
                 });
             }
             @endguest
