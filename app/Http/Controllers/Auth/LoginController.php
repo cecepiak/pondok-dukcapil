@@ -27,37 +27,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-
-        $turnstileResponse = $_POST['turnstileToken'];
-        $secretKey = '0x4AAAAAABlUuuhpoCaKaNS1g6iueUMwU_c';
-        $verifyURL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-        $data = [
-            'secret' => $secretKey,
-            'response' => $turnstileResponse,
-            'remoteip' => $_SERVER['REMOTE_ADDR']
-        ];
-
-        $options = [
-            'http' => [
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            ]
-        ];
-
-        $context = stream_context_create($options);
-        $result = file_get_contents($verifyURL, false, $context);
-        $resultData = json_decode($result, true);
-
-        // if (!$resultData['success']) {
-        //     http_response_code(400);
-        //     echo json_encode([
-        //         'status' => 'error',
-        //         'message' => 'Captcha tidak valid, silahkan coba lagi.'
-        //     ]);
-        //     return;
-        // }
-
         // Validasi input dasar
         $credentials = $request->validate([
             'nik' => ['required', 'numeric', 'digits:16'],

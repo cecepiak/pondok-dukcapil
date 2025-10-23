@@ -40,9 +40,22 @@
         </a>
 
         {{-- Logo di tengah --}}
-        <a href="#" class="flex flex-col items-center -mt-2 rounded-full w-9 h-9 shadow-md justify-center">
+        {{-- <a href="#" class="flex flex-col items-center -mt-1 rounded-full w-9 h-9 shadow-md justify-center">
             <img src="{{ asset('icon/logo2.png') }}" alt="Logo" class="size-8">
-        </a>
+        </a> --}}
+
+        {{-- ⭐️ Logo di tengah: MODIFIKASI DIMULAI DI SINI ⭐️ --}}
+        <a href="#" class="flex flex-col items-center 
+            bg-black 
+            -mt-8           /* Menarik ke atas */
+            w-16 h-16       /* MEMBESARKAN lingkaran (width dan height) */
+            rounded-full 
+            shadow-xl       /* Mempertebal bayangan untuk efek 3D */
+            justify-center
+            p-0.5             /* Menambah sedikit padding */
+        ">
+            <img src="{{ asset('icon/logo4.png') }}" alt="Logo" class="size-16"> </a>
+        {{-- ⭐️ MODIFIKASI SELESAI ⭐️ --}}
 
         {{-- Tautan Riwayat --}}
         {{-- <a href="{{ route('transaksi.index') }}" id="riwayat-link" class="flex flex-col items-center

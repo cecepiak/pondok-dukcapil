@@ -18,6 +18,7 @@
         </div>
 
         <!-- Alpine.js: Kelola state semua grup dan akordion -->
+
         <div
             x-data="{
                 openGroup: null,
@@ -45,16 +46,16 @@
                 <div class="border border-white/50 rounded-xl overflow-hidden shadow-lg bg-white/50 backdrop-blur-sm">
                     <!-- Header Grup -->
                     <button
-                        class="w-full flex justify-between items-center p-4 text-left bg-blue-50 hover:bg-blue-100 focus:outline-none transition-colors"
+                        class="w-full flex justify-between items-center p-4 text-left hover:bg-blue-50 focus:outline-none transition-colors"
                         @click="toggleGroup('{{ $groupSlug }}')"
                         :aria-expanded="isGroupOpen('{{ $groupSlug }}')"
                     >
-                        <span class="font-semibold text-blue-800 flex items-center gap-2">
+                        <span class="font-semibold text-gray-800 flex items-center gap-2">
                             {!! $items->icon_svg !!}
                             {{ $items->nama_lengkap }}
                         </span>
                         <svg
-                            class="w-5 h-5 text-blue-600 transition-transform duration-200"
+                            class="w-5 h-5 text-gray-600 transition-transform duration-200"
                             :class="{ 'rotate-180': isGroupOpen('{{ $groupSlug }}') }"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         >

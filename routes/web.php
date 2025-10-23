@@ -21,6 +21,7 @@ use App\Http\Controllers\KomplainController;
 use App\Models\SetupKel;
 use Illuminate\Http\Request;
 
+Route::view('/', 'welcome')->name('landing');
 // === 1. ROUTE YANG SELALU BISA DIAKSES (MESKI JADWAL TUTUP) ===
 Route::get('/formulir', [FormulirController::class, 'index'])->name('formulir.index');
 Route::get('/formulir/download/{filename}', [FormulirController::class, 'download'])->name('formulir.download');
@@ -34,7 +35,7 @@ Route::get('/desa', [LocationController::class, 'getDesa'])->name('get.desa');
 
 // === 2. ROUTE YANG DILINDUNGI JADWAL ===
     // Homepage
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Rute yang memerlukan login
     Route::middleware(['auth'])->group(function () {

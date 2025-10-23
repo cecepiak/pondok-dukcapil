@@ -52,11 +52,11 @@
                 @enderror
             </div>
 
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAABlUukFcJ2Ij3GAq" data-size="flexible"></div>
-            <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+            {{-- <div class="cf-turnstile" data-sitekey="0x4AAAAAABlUukFcJ2Ij3GAq" data-size="flexible"></div>
+            <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> --}}
             
             <div class="flex flex-col sm:flex-row items-center justify-between mt-6">
-                <button type="submit" class="w-full sm:w-auto flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-200 shadow-md transform transition-transform duration-300 hover:scale-105">
+                <button type="submit" class="w-full sm:w-auto flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-200 shadow-md transform hover:scale-105">
                     {{-- Ikon Kunci sebagai SVG --}}
                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18 10h-1V7c0-2.76-2.24-5-5-5S7 4.24 7 7v3H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-5 8h-2v-2h2v2zm-2-4v-1h2v1c0 .55.45 1 1 1s1-.45 1-1V7c0-1.657-1.343-3-3-3s-3 1.343-3 3v3h1v-1c0-.55.45-1 1-1s1 .45 1 1v1h2v-1z"/>

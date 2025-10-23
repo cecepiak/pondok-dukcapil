@@ -2,9 +2,7 @@
 @section('content')
 
 <div class="max-w-4xl mx-auto p-4 pb-20">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/modules/lightbox/lightbox.min.css" />
-
+    
     <div class="swiper mySwiper rounded-lg">
         <div class="swiper-wrapper">
             <div class="swiper-slide flex justify-center">
@@ -109,20 +107,14 @@
     <section class="mt-4">
         {{-- <h2 class="text-lg font-bold mb-2 text-center">Pilih Layanan</h2> --}}
         <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-            {{-- Layanan Konsultasi --}}
-            {{-- <a href="javascript:void(0);" id="konsultasi-link" class="animate-bounce-up bg-white/70 rounded-lg shadow-xl overflow-hidden flex flex-col items-center justify-center p-4 transform transition duration-300 hover:scale-105 hover:bg-gray-100">
-                <img src="{{ asset('icon/konsultasi.png') }}" alt="Layanan Konsultasi" class="w-20 h-20 mb-2">
-                <p class="font-bold text-black-500 text-center">Layanan Konsultasi</p>
-            </a> --}}
-
             {{-- Layanan Online --}}
             <a href="javascript:void(0);" id="adminduk-link" class="animate-bounce-up bg-white/70 rounded-lg shadow-xl overflow-hidden flex flex-col items-center justify-center p-4 transform transition duration-300 hover:scale-105 hover:bg-gray-100">
                 <img src="{{ asset('icon/online2.png') }}" alt="Layanan Online" class="w-20 h-20 mb-2">
                 <p class="font-bold text-black-500 mt-1 text-center">Layanan Online</p>
             </a>
 
-            {{-- Lapor Kedatangan --}}
-            <a href="javascript:void(0);" id="kedatangan-link" class="animate-bounce-up bg-white/70 rounded-lg shadow-xl overflow-hidden flex flex-col items-center justify-center p-4 transform transition duration-300 hover:scale-105 hover:bg-gray-100">
+            {{-- Lapor Kedatangan (Tambahkan ID: kedatangan-link) --}}
+            <a href="/form_pengajuan?keterangan=DTG&judul=Kedatangan%20Luar Daerah&icon=kedatangan.png" id="kedatangan-link" class="animate-bounce-up bg-white/70 rounded-lg shadow-xl overflow-hidden flex flex-col items-center justify-center p-4 transform transition duration-300 hover:scale-105 hover:bg-gray-100">
                 <img src="{{ asset('icon/kedatangan.png') }}" alt="Lapor Kedatangan" class="w-20 h-20 mb-2">
                 <p class="font-bold text-black-500 mt-1 text-center">Kedatangan Luar Daerah</p>
             </a>
@@ -148,25 +140,38 @@
                 font-weight: bold;
             }
         </style>
-            <p class="mt-2 text-black/70">
-                <span class="merah">P</span>elayanan <span class="biru">On</span>line
-                <span class="hijau">Do</span>kumen <span class="kuning">K</span>ependudukan
-            </p>
-            <h2 style="font-size: 2.25rem; font-weight: bold;">
-                <span class="merah">DIS</span><span class="biru">DUK</span><span class="hijau">CA</span><span class="kuning">PIL</span>
-            </h2>
+        <p class="mt-2 text-black/70">
+            <span class="merah">P</span>elayanan <span class="biru">On</span>line
+            <span class="hijau">Do</span>kumen <span class="kuning">K</span>ependudukan
+        </p>
+        <h2 style="font-size: 2.25rem; font-weight: bold;">
+            <span class="merah">DIS</span><span class="biru">DUK</span><span class="hijau">CA</span><span class="kuning">PIL</span>
+        </h2>
         <img src="{{ asset('icon/jargon2.png') }}" alt="Jargon Tapin" class="mt-4 mx-auto w-45 h-20">
     </section>
 </div>
 
+{{-- HTML MODAL LOGIN - ID: login-modal --}}
 <div id="login-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
-    <div class="flex items-center justify-center min-h-screen px-4 py-6 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-        <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+    
+    {{-- Container untuk pemusatan penuh --}}
+    {{-- Menggunakan min-h-full dan menghapus kelas responsif yang berpotensi memecahkan pemusatan Flexbox --}}
+    <div class="flex items-center justify-center min-h-full px-4 py-6 text-center"> 
+        
+        {{-- BackDrop (Lapisan Abu-abu Transparan) --}}
+        {{-- Z-index disetel ke 40 (lebih rendah dari konten modal) --}}
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-40" aria-hidden="true"></div> 
+        
+        {{-- Kotak Konten Modal (Kotak Putih) --}}
+        {{-- Z-index disetel ke 50 (paling atas) --}}
+        <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl 
+                    transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 
+                    relative z-50"> 
+            
             <div class="sm:flex sm:items-start">
                 <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-blue-600">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.017 3.377 1.517 3.377h13.064c1.5 0 2.383-1.877 1.517-3.377L12.99 3.375c-.865-1.5-2.29-1.5-3.155 0L2.696 16.501z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.017 3.377 1.517 3.377h13.064c1.5 0 2.383-1.877 1.517-3.377L12.99 3.375c-.865-1.5-2.29-1-3.155 0L2.696 16.501z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     </svg>
                 </div>
@@ -198,118 +203,116 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Deklarasi variabel
         const admindukLink = document.getElementById('adminduk-link');
         const loginModal = document.getElementById('login-modal');
         const closeModalBtn = document.getElementById('close-modal-btn');
         const pengajuanLink = document.getElementById('pengajuan-link');
         const riwayatLink = document.getElementById('riwayat-link');
         const akunLink = document.getElementById('akun-link');
-        const konsultasiLink = document.getElementById('konsultasi-link');
-        const kedatanganLink = document.getElementById('kedatangan-link');
-        
-        function showModal() {
-            loginModal.classList.remove('hidden');
-        }
+        // const konsultasiLink = document.getElementById('konsultasi-link'); // Dihapus karena ID tidak ada di HTML
+        const kedatanganLink = document.getElementById('kedatangan-link'); // Sudah ditambahkan ID di HTML
 
-        function hideModal() {
-            loginModal.classList.add('hidden');
-        }
+        // Pastikan elemen penting (Modal dan Tombol Tutup) ditemukan
+        if (loginModal && closeModalBtn) {
+            function showModal() {
+                loginModal.classList.remove('hidden');
+            }
 
-        @guest
-        admindukLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            showModal();
-        });
+            function hideModal() {
+                loginModal.classList.add('hidden');
+            }
 
-        if (pengajuanLink) {
-            pengajuanLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showModal();
-            });
-        }
-        if (riwayatLink) {
-            riwayatLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showModal();
-            });
-        }
-        if (akunLink) {
-            akunLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showModal();
-            });
-        }
-        if (konsultasiLink) {
-            konsultasiLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showModal();
-            });
-        }
-        if (kedatanganLink) {
-            kedatanganLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showModal();
-            });
-        }
-        @else
-        admindukLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = '/layanan';
-        });
+            // Memasang listener pada tombol tutup
+            closeModalBtn.addEventListener('click', hideModal);
 
-        if (pengajuanLink) {
-            pengajuanLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '/tracking';
-            });
-        }
-        if (riwayatLink) {
-            riwayatLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '/transaksi';
-            });
-        }
-        if (akunLink) {
-            akunLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '/account';
-            });
-        }
-        if (konsultasiLink) {
-            konsultasiLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '/formulir-konsultasi';
-            });
-        }
-        if (kedatanganLink) {
-            kedatanganLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '/form_pengajuan?keterangan=datang&judul=Kedatangan%20Luar%20Daerah&icon=kedatangan.png';
-            });
-        }
-        @endguest
+            @guest
+            // Logika ketika user BELUM login: Tampilkan Modal
 
-        closeModalBtn.addEventListener('click', hideModal);
+            // 1. Link Layanan Online (adminduk-link)
+            if (admindukLink) { 
+                admindukLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showModal();
+                });
+            }
+
+            // 2. Link Lacak (pengajuan-link) - dari footer
+            if (pengajuanLink) {
+                pengajuanLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showModal();
+                });
+            }
+            
+            // 3. Link Riwayat (riwayatLink) - dari footer
+            if (riwayatLink) {
+                riwayatLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showModal();
+                });
+            }
+            
+            // 4. Link Akun (akunLink) - dari footer
+            if (akunLink) {
+                akunLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showModal();
+                });
+            }
+            
+            // 5. Link Kedatangan
+            if (kedatanganLink) {
+                kedatanganLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showModal();
+                });
+            }
+
+            @else
+            // Logika ketika user SUDAH login: Redirect
+
+            if (admindukLink) {
+                admindukLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '/layanan';
+                });
+            }
+
+            if (pengajuanLink) {
+                pengajuanLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '/tracking';
+                });
+            }
+
+            if (riwayatLink) {
+                riwayatLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '/transaksi';
+                });
+            }
+
+            if (akunLink) {
+                akunLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '/account';
+                });
+            }
+
+            if (kedatanganLink) {
+                kedatanganLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '/form_pengajuan?keterangan=datang&judul=Kedatangan%20Luar%20Daerah&icon=kedatangan.png';
+                });
+            }
+            @endguest
+        }
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{{-- SCRIPT LIGHTBOX UNTUK GAMBAR SLIDER --}}
 <script>
-    var swiper = new Swiper(".mySwiper", {
-        loop: true,
-        slidesPerView: 2,
-        centeredSlides: false,
-        spaceBetween: 30,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-
     document.addEventListener('DOMContentLoaded', function() {
         // Mendapatkan semua link yang memiliki kelas lightbox-link
         const lightboxLinks = document.querySelectorAll('.lightbox-link');
@@ -345,6 +348,7 @@
 
 @push('scripts')
 {{-- SweetAlert2 already loaded in app.blade.php --}}
+    
 
 @if(session('success'))
 <script>
